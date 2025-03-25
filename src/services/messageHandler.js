@@ -101,7 +101,7 @@ class MessageHandler {
         await this.sendContact(to);
         break
       default: 
-       response = "Con el mayor de los gustos"
+       response = "¡Nos alegra haber sido de ayuda! 😊"
     }
     await whatsappService.sendMessage(to, response);
   }
