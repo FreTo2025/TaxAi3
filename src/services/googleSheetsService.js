@@ -1,6 +1,13 @@
 import path from 'path';
 import { google } from 'googleapis';
 
+import fs from 'fs';
+const credentialsPath = path.join(process.cwd(), 'src/credentials', 'credentials.json');
+const content = fs.readFileSync(credentialsPath, 'utf-8');
+console.log('📄 Primeras líneas de private_key:\n', JSON.parse(content).private_key.split('\n').slice(0, 3));
+
+
+
 const sheets = google.sheets('v4');
 
 async function addRowToSheet(auth, spreadsheetId, values) {
