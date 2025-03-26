@@ -1,5 +1,5 @@
 import whatsappService from './whatsappService.js';
-import appendToSheet from './googleSheetsService.js';
+import appendToSheet, testAuth from './googleSheetsService.js';
 import openAiService from './openAiService.js';
 
 class MessageHandler {
@@ -52,7 +52,7 @@ class MessageHandler {
 
   async sendWelcomeMessage(to, messageId, senderInfo) {
     const name = this.getSenderName(senderInfo);
-    const welcomeMessage = `Hola ${name}, Bienvenido a TaxAi, experto tributario en línea. ¿En qué puedo ayudarte hoy?`;
+    const welcomeMessage = `Hola ${name}, Bienvenido a TaxAi, tu experto tributario en línea. ¿En qué puedo ayudarte hoy?`;
     await whatsappService.sendMessage(to, welcomeMessage, messageId);
   }
 
@@ -139,6 +139,8 @@ class MessageHandler {
       new Date().toISOString()
     ];
 
+   testAuth(); 
+    
     appendToSheet(userData);
 
     const response = `Gracias por agendar tu cita. 
