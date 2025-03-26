@@ -33,6 +33,16 @@ const appendToSheet = async (data) => {
         const authClient = await auth.getClient();
         const spreadsheetId = '1cUyad9EmmRlvbOWyecWTLHJSvmILy0WLopPpvHYWMjg'
 
+
+auth.getClient().then(() => {
+  console.log('✔️ Autenticación exitosa');
+}).catch(err => {
+  console.error('❌ Error autenticando:', err);
+});
+
+
+
+        
         await addRowToSheet(authClient, spreadsheetId, data);
         return 'Datos correctamente agregados'
     } catch (error) {
