@@ -138,8 +138,6 @@ class MessageHandler {
       appointment.reason,
       new Date().toISOString()
     ];
-
-   testAuth(); 
     
     appendToSheet(userData);
 
