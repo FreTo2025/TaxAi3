@@ -52,7 +52,7 @@ class MessageHandler {
 
   async sendWelcomeMessage(to, messageId, senderInfo) {
     const name = this.getSenderName(senderInfo);
-    const welcomeMessage = `Hola ${name}, Bienvenido a TaxAi, tu experto tributario en línea. ¿En qué puedo ayudarte hoy?`;
+    const welcomeMessage = `Hola ${name}, Bienvenido a TaxAi, experto tributario en línea. ¿En qué puedo ayudarte hoy?`;
     await whatsappService.sendMessage(to, welcomeMessage, messageId);
   }
 
@@ -92,6 +92,9 @@ class MessageHandler {
        response = 'Te esperamos.';
        await this.sendLocation(to);
        break
+      case 'option_4':
+        response = "¡Gracias por usar TaxAi! Estamos para servirte.";
+        break;
        case 'option_5': // Opción para hacer otra pregunta
        this.assistandState[to] = { step: 'question' }; // Reinicia el flujo de consultas
        response = "Puedes hacer otra consulta.";
@@ -138,7 +141,7 @@ class MessageHandler {
       appointment.reason,
       new Date().toISOString()
     ];
-    
+
     appendToSheet(userData);
 
     const response = `Gracias por agendar tu cita. 
@@ -204,7 +207,7 @@ class MessageHandler {
   }
 
   async sendContact(to) {
-    const contact = {
+    const contacto1 = {
       addresses: [
         {
           street: "Cl 9 19 01",
@@ -225,14 +228,10 @@ class MessageHandler {
       name: {
         formatted_name: "Fredy O. Torres C.",
         first_name: "Fredy O.",
-        last_name: "Torres C.",
-        middle_name: "",
-        suffix: "",
-        prefix: ""
+        last_name: "Torres C."
       },
       org: {
         company: "FTC Asesorias",
-        department: "",
         title: "Tu Asesor"
       },
       phones: [
@@ -249,8 +248,51 @@ class MessageHandler {
         }
       ]
     };
-
-    await whatsappService.sendContactMessage(to, contact);
+  
+    //const contacto2 = {
+    // addresses: [
+    //    {
+    //      street: "Frente a la Nueva Eps",
+    //      city: "San Jose del Guaviare",
+    //      state: "Guaviare",
+    //      zip: "950001",
+    //      country: "Colombia",
+    //      country_code: "CO",
+    //      type: "WORK"
+    //    }
+    //  ],
+    //  emails: [
+    //    {
+    //      email: "miguelangel@miguelangel.co",
+    //      type: "WORK"
+    //    }
+    //  ],
+    //  name: {
+    //    formatted_name: "Miguel Angel",
+    //    first_name: "Miguel Angel",
+    //    last_name: "Cordero"
+    //  },
+    //  org: {
+    //    company: "ML",
+    //    title: "Asesor TributariO"
+    //  },
+    //  phones: [
+    //    {
+    //      phone: "+573152212694",
+    //      wa_id: "573152212694",
+    //      type: "WORK"
+    //    }
+    //  ],
+    //  urls: [
+    //   {
+    //      url: "https://www.miguel.co",
+    //      type: "WORK"
+    //    }
+    //  ]
+    // };
+  
+    await whatsappService.sendContactMessage(to, contacto1);
+    await whatsappService.sendContactMessage(to, contacto2);
   }
 
   async sendLocation(to) {
