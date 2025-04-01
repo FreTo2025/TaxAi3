@@ -1,10 +1,6 @@
 import express from 'express';
 import config from './config/env.js';
 import webhookRoutes from './routes/webhookRoutes.js';
-import { testGoogleAuth } from './services/authCheck.js';
-
-testGoogleAuth();
-
 
 const app = express();
 app.use(express.json());
