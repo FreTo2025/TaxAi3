@@ -1,5 +1,5 @@
 {
-  "name": "medpet",
+  "name": "TaxAi",
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "axios": "^1.7.7",
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
-    "googleapis": "^144.0.0",
+    "googleapis": "^148.0.0",
     "openai": "^4.68.0"
   },
   "devDependencies": {
